@@ -1,6 +1,8 @@
 // freeCodeCamp - JavaScript Algorithms and Data Structures Certificate
 
-// Roman Numeral Convertor - Project Two
+// Roman Numeral Convertor - Project Two - Instructions
+// Convert the given number into a roman numeral.
+// All roman numerals answers should be provided in upper-case.
 
 function convertToRoman(num) {
 
