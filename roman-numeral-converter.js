@@ -1,6 +1,5 @@
 // freeCodeCamp - JavaScript Algorithms and Data Structures Certificate
 
-
 // Roman Numeral Convertor - Project Two
 
 function convertToRoman(num) {
