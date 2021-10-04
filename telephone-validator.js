@@ -17,17 +17,33 @@
 function telephoneCheck(str) {
     str = str.replace(/\s/g, ""); //Remove any whitespace in the str.
     let regexNum = [
-        /[\d{3}-\d{3}-\d{4}]/,
-        /[(\d{3})\d{3}-\d{4}]/,
-        /[\d{10}]/,
-        /[/d{11}]/];
+        /\d{3}-\d{3}-\d{4}/g,
+        /(\d{3})\d{3}-\d{4}/g,
+        /\d{10,11}/g,
+        /1\(\d{3}\)\d{3}-\d{4}/g,
+        /\(\d{3}\)\d{3}-\d{4}/g,
+        /\(\d{3}-\d{3}-\d{4}\)/g,
+        /\(\d{10,15}\)/g
+    ];
+    let regexLetter = /[a-z]/gi;
 
-    for(let i = 0; i <= regexNum.length; i++){
-        if(regexNum[i].test(str) == true){
-            return true;
-        }else {
-            return false;
-        }
-    };
-};
-console.log(telephoneCheck("800-(2  11)-4566"));
+
+// if ((regexLetter.test(str) == true) ||       //Check arguement for letters
+//     (str.length < 10) ||                     //Check arguement for correct length w/o area code
+//     (((str.length == 11) || (str.length == 14)) && (str[0] != 1)) ||
+//     ((str.length > 14))){  //Check arguement for correct length with area code & correct country code
+//         return false;
+// }else 
+    if(  (regexNum[0].test(str) == true) ||
+           (regexNum[1].test(str) == true) ||
+           (regexNum[2].test(str) == true) ||
+           (regexNum[3].test(str) == true) ||
+           (regexNum[4].test(str) == true) ||
+           (regexNum[5].test(str) == true)){
+               return true;
+           }
+return false;
+};    
+   
+
+console.log(telephoneCheck("333-333-3333"));
