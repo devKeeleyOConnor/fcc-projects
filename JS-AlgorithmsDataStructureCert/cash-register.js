@@ -20,17 +20,24 @@
 // sorted in highest to lowest order, as the value of the change key.
 
 function checkCashRegister(price, cash, cid) {
-    let change;
-    return change;
-//Create cashreg obj with status and change key/value pairs.
+
+//Create cashreg obj with status, change, and cash-in-drawer total key/value pairs.
   let cashreg = {
-    status = "OPEN",
-    change = [],
+    status = "OPEN",        //Cash drawer status.
+    change = [],            //Place holder for the change value to be returned
   }
 
-//Subtract the price amount from the cash to receive the amount to be returned. 
+ // Add the tender amounts in the cid array for a monetary total in the cash draw.
+ for( let i = 0; i >= cid.length; i++){
+   let arrTotal = arrTotal += cid[i][1]
+   console.log(arrTotal);
+ } 
+ cidTotal = arrTotal;
+console.log(cidTotal);
+ //Subtract the price amount from the cash to receive the amount to be returned. 
   let returnVal = cash - price;
-// Set cashreg status and change keys based on returnVal and CID
+
+ // Set cashreg status and change keys based on returnVal and CID
   if(returnVal > cid){
      cashreg.status = "INSUFFICIENT_FUNDS";
   }else if (returnVal == cid){
