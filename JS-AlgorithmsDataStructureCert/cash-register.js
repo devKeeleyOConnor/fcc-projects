@@ -20,31 +20,32 @@
 // sorted in highest to lowest order, as the value of the change key.
 
 function checkCashRegister(price, cash, cid) {
-
+  let cashback = cash - price;
 //Create cashreg obj with status, change, and cash-in-drawer total key/value pairs.
   let cashreg = {
-    status = "OPEN",        //Cash drawer status.
-    change = [],            //Place holder for the change value to be returned
+    status : "OPEN",        //Cash drawer status.
+    change : [],            //Place holder for the change value to be returned
   }
+  let cashDrawerTotal = 0;
+  const regCash = cid
 
- // Add the tender amounts in the cid array for a monetary total in the cash draw.
- for( let i = 0; i >= cid.length; i++){
-   let arrTotal = arrTotal += cid[i][1]
-   console.log(arrTotal);
+ //Add the total amount of cash in the register.
+ for(const money in regCash){
+  parseInt(money); //Change the string money into an interger to be used as an index.
+  cashDrawerTotal += regCash[money][1];
  } 
- cidTotal = arrTotal;
-console.log(cidTotal);
- //Subtract the price amount from the cash to receive the amount to be returned. 
-  let returnVal = cash - price;
+cashDrawerTotal = cashDrawerTotal.toFixed(2); // Round the decimal to two places. 
 
- // Set cashreg status and change keys based on returnVal and CID
-  if(returnVal > cid){
-     cashreg.status = "INSUFFICIENT_FUNDS";
-  }else if (returnVal == cid){
+//Check if cash-in-drawer is less than change due.
+  if(cashback > cashDrawerTotal){
+    cashreg.status = "INSUFFICIENT_FUNDS"
+  }else if(cashback == cashDrawerTotal){
     cashreg.status = "CLOSED";
-    cashreg.change = returnedChange;
+    cashreg.change = regCash;
+  }else{
+    //Function to count change and return it in an 2D array sorted highest value to lowest.
   }
-
-  }
-
-checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]);
+ console.log(cashback)
+  return cashreg;
+};
+  console.log(checkCashRegister(19, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
