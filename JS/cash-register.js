@@ -85,15 +85,15 @@ if(cents >= .25){
   coinAmt = Math.floor(cents / .25);
   cents = (cents - (coinAmt * .25)).toFixed(2);
   cashreg.change.push(["Quarter", coinAmt * .25]);
-  coinAmt = Math.floor(cents / .10);
-  cents = (cents - (coinAmt * .10)).toFixed(2);
-  cashreg.change.push(["Dime", coinAmt * .10]);
-  coinAmt = Math.floor(cents / .05);
-  cents = (cents - (coinAmt * .05)).toFixed(2);
-  cashreg.change.push(["Nickle", coinAmt * .05]);
-  coinAmt = Math.floor(cents / .01);
-  cents = (cents - (coinAmt * .01)).toFixed(2);
-  cashreg.change.push(["Penny", coinAmt * .01]);
+  // coinAmt = Math.floor(cents / .10);
+  // cents = (cents - (coinAmt * .10)).toFixed(2);
+  // cashreg.change.push(["Dime", coinAmt * .10]);
+  // coinAmt = Math.floor(cents / .05);
+  // cents = (cents - (coinAmt * .05)).toFixed(2);
+  // cashreg.change.push(["Nickle", coinAmt * .05]);
+  // coinAmt = Math.floor(cents / .01);
+  // cents = (cents - (coinAmt * .01)).toFixed(2);
+  // cashreg.change.push(["Penny", coinAmt * .01]);
 }else if(cents > .10){
   coinAmt = Math.floor(cents / .10);
   cents = (cents - (coinAmt * .10)).toFixed(2);
