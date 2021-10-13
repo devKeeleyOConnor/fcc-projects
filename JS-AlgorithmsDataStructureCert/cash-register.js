@@ -40,7 +40,7 @@ function change(cashbackAmt){
 //Seperate the returned dollar amount from the returned change, and create a 2D array to contain the values of dollars and cents.
 let dollars = Math.floor(cashbackAmt);
 let cents = cashbackAmt - dollars;
-// Calculate the bills to be returned, if any.
+// // Calculate the bills to be returned, if any.
 if(dollars >= 100){
   coinAmt = (dollars / 100);
   dollars = (dollars - (coinAmt * 100));
@@ -94,7 +94,7 @@ if(cents >= .25){
   coinAmt = Math.floor(cents / .01);
   cents = (cents - (coinAmt * .01)).toFixed(2);
   cashreg.change.push(["Penny", coinAmt * .01]);
-}else if(cents >= .10){
+}else if(cents > .10){
   coinAmt = Math.floor(cents / .10);
   cents = (cents - (coinAmt * .10)).toFixed(2);
   cashreg.change.push(["Dime", coinAmt * .10]);
@@ -129,4 +129,4 @@ if(cashback > cashDrawerTotal){
 };
 return cashreg;
 };
-  console.log(checkCashRegister(13.54, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
+  console.log(checkCashRegister(10003.54, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
