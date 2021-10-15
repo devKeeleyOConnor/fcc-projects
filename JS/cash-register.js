@@ -23,10 +23,11 @@ function checkCashRegister(price, cash, cid) {
   let cashback = (cash - price).toFixed(2);
 
 //Create cashreg obj with status, change, and cash-in-drawer total key/value pairs.
-  let regDrawer = {
+  const register = {
     status : "OPEN",        //Cash drawer status.
     change : [],            //Place holder for the change value to be returned
   }
+
   let regTotal = 0;
   const regCash = cid
 
@@ -37,57 +38,57 @@ function checkCashRegister(price, cash, cid) {
   } 
   regTotal = regTotal.toFixed(2); // Round the decimal to two places. 
 
-  function change(amountReturned){
+function change(amountReturned){
 // Seperate the returned dollar amount from the returned change, and create a 2D array to contain the values of dollars and cents.
     let bills = Math.floor(amountReturned);
+    const billArr = [
+        ["ONE HUNDRED", 100], 
+        ["TWENTY", 20],
+        ["TEN", 10],
+        ["FIVE" , 5],
+        ["ONE", 1],
+    ]
+    const centArr =[
+        ["QUARTER", .25],
+        ["DIME", .10],
+        ["NICKLE", .05],
+        ["PENNY", 01]
+    ]
     let cents = amountReturned - bills;
-    
+    const regDrawer =[];
 // Calculate the bills to be returned, if any.
-    if (bills > 0){
-      billAmt = bills / 100;
-      bills = bills - (billAmt * 100);
-      regDrawer.change.push(["ONE HUNDRED", billAmt * 100]);
-      billAmt = bills / 20;
-      bills = bills - (billAmt * 20);
-      regDrawer.change.push(["TWENTY", billAmt * 20]);
-      billAmt = bills / 10;
-      bills = bills - (billAmt * 10);
-      regDrawer.change.push(["TEN", billAmt * 10]);
-      billAmt = bills / 5;
-      bills = bills - (billAmt * 5);
-      regDrawer.change.push(["FIVE", billAmt * 5]);
-      billAmt = bills / 1;
-      bills = bills - (billAmt * 1);
-      regDrawer.change.push(["ONE", billAmt * 1]);
+    for(let i = 0; i < billArr.length; i++){
+        let val = billArr[i][1];
+            if (bills > val){
+                billAmt = bills / val;
+                    if(billAmt != 0){
+                        register.change.push([billArr[i][0], billAmt * val]);
+                    }
+            }
     }
-
+    
 // Calculate the change to be returned, if any.
-    if (cents > 0){
-      coinAmt = Math.floor(cents / .25);
-      cents = (cents - (coinAmt * .25)).toFixed(2);
-      regDrawer.change.push(["QUARTER", coinAmt * .25]);
-      coinAmt = Math.floor(cents / .10);
-      cents = (cents - (coinAmt * .10)).toFixed(2);
-      regDrawer.change.push(["DIME", coinAmt * .10]);
-      coinAmt = Math.floor(cents / .05);
-      cents = (cents - (coinAmt * .05)).toFixed(2);
-      regDrawer.change.push(["NICKLE", coinAmt * .05]);
-      coinAmt = Math.floor(cents / .01);
-      cents = (cents - (coinAmt * .01)).toFixed(2);
-      regDrawer.change.push(["PENNY", coinAmt * .01]);
-    }
+   for(let i = 0; i < centArr.length; i++){
+       let val = centArr[i][1];
+        if (cents > val){
+            centAmt = cents / val;
+            if(centAmt != 0){
+                register.change.push([centArr[i][0], Number((centAmt * val).toFixed(2))]);
+            }
+        }
+   }
   } //End of func change()
 
 //Check if cash-in-drawer is less than change due.
   if(cashback < 0){
-    regDrawer.status = "INSUFFICIENT_FUNDS"
+    register.status = "INSUFFICIENT_FUNDS"
   }else if(cashback == regTotal){
-    regDrawer.status = "CLOSED";
-    regDrawer.change = regCash;
+    register.status = "CLOSED";
+    register.change = regCash;
   }else{    //Function to count change and return it in an 2D array sorted highest value to lowest.
     change(cashback);
   }
-  return regDrawer;
+  return register;
 };
 console.log(checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]))
 console.log(checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]))
