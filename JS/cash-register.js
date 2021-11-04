@@ -3,15 +3,14 @@
 //Cash Register - Project Five 
 
 function checkCashRegister(price, cash, cid) {
-  //Create cashreg obj with status, change, and cash-in-drawer total key/value pairs.
+  //Create the register obj with status and change key/value pairs.
   const register = {
     status : "OPEN",        //Cash drawer status.
     change : [],            //Place holder for the change value to be returned
   }
-  let regTotal = 0;
   const regCash = cid
   let cashback = parseInt((cash - price).toFixed(2));
-
+  let regTotal = 0;
   //Add the total amount of cash in the register.
   for(const money in regCash){
     parseInt(money); //Change the string money into an interger to be used as an index.
@@ -19,10 +18,9 @@ function checkCashRegister(price, cash, cid) {
   } 
   regTotal = parseInt(regTotal.toFixed(2)); // Round the decimal to two places.
 
-
   if(regTotal < cashback){
     register.status = "INSUFFICIENT_FUNDS"
-  }else if(cashback == regTotal){
+  }else if(regTotal == cashback){
     register.status = "CLOSED";
     register.change = cid;
   };
@@ -32,6 +30,7 @@ function change(amountReturned){
     let bills = Math.floor(amountReturned);
     let cents = amountReturned - bills;
     let billAmt, centAmt;
+    
     const billArr = [
         ["ONE HUNDRED", 100], 
         ["TWENTY", 20],
