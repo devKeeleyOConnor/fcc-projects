@@ -25,10 +25,7 @@ function checkCashRegister(price, cash, cid) {
     register.change = cid;
   };
 
-<<<<<<< HEAD
-  
 
-=======
 function change(amountReturned){
 // Seperate the returned dollar amount from the returned change, and create a 2D array to contain the values of dollars and cents.
     let bills = Math.floor(amountReturned);
@@ -78,13 +75,4 @@ if(register.status == "OPEN"){
 }
   return register;
 };
-<<<<<<< HEAD
->>>>>>> 869a53430e9ce922a5b25b81f281aefe0b2c5887
-console.log(checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]))
-console.log(checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]))
-console.log(checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]))
-console.log(checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 1], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]))
 
-=======
-console.log(checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
->>>>>>> a622e8ce092b4ea1f1d8567b337dfaa59ecab9c2
