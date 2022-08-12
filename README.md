@@ -1,6 +1,6 @@
 # This repository contains coursework and projects from freeCodeCamp.com 
 
-<a href="https://www.freecodecamp.org/certification/dev-oconnor/responsive-web-design"> Responsive Web Design Certification </a>
+<a href="https://www.freecodecamp.org/certification/k-oconnor/responsive-web-design"> Responsive Web Design Certification </a>
 
 [Projects]<br>
 Build a Tribute Page  <br>
@@ -18,4 +18,4 @@ Palindrome Checker <br>
 Roman Numeral Convertor <br>
 Caesar's Cipher <br>
 Telephone Number Validator <br>
-Cash Register <br>
+Cash Register <br> (WIP)
